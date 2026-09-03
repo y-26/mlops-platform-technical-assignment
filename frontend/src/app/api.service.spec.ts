@@ -1,0 +1,3 @@
+import { TestBed } from '@angular/core/testing';import { provideHttpClient } from '@angular/common/http';import { HttpTestingController,provideHttpClientTesting } from '@angular/common/http/testing';import { ApiService } from './api.service';
+describe('ApiService',()=>{let api:ApiService;let http:HttpTestingController;beforeEach(()=>{TestBed.configureTestingModule({providers:[provideHttpClient(),provideHttpClientTesting()]});api=TestBed.inject(ApiService);http=TestBed.inject(HttpTestingController)});afterEach(()=>http.verify());it('loads models through the API boundary',()=>{api.models().subscribe(items=>expect(items).toEqual([]));http.expectOne('/api/models').flush([])})});
+

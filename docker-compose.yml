@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: mlops
+      POSTGRES_PASSWORD: mlops
+      POSTGRES_DB: mlops
+    volumes: [mlops-data:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U mlops"], interval: 5s, timeout: 3s, retries: 10}
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://mlops:mlops@db:5432/mlops
+      CORS_ORIGINS: http://localhost:4200,http://localhost
+    volumes:
+      - ./data:/data:ro
+    ports: ["8000:8000"]
+    depends_on: {db: {condition: service_healthy}}
+    healthcheck: {test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"], interval: 10s, timeout: 3s, retries: 5}
+  frontend:
+    build: ./frontend
+    ports: ["4200:80"]
+    depends_on: {backend: {condition: service_healthy}}
+volumes: {mlops-data: {}}

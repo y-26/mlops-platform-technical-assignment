@@ -1,0 +1,42 @@
+[
+  {
+    "model_id": "clutch-health-classifier",
+    "name": "Clutch Health Classifier",
+    "owner": "ML Engineering",
+    "framework": "scikit-learn",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "stage": "ARCHIVED",
+        "approved": true,
+        "artifact_uri": "models://clutch/1.0.0/model.pkl"
+      },
+      {
+        "version": "2.0.0",
+        "stage": "PRODUCTION",
+        "approved": true,
+        "artifact_uri": "models://clutch/2.0.0/model.pkl"
+      }
+    ]
+  },
+  {
+    "model_id": "customer-segmentation",
+    "name": "Customer Segmentation",
+    "owner": "Data Science Team",
+    "framework": "scikit-learn",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "stage": "PRODUCTION",
+        "approved": true,
+        "artifact_uri": "models://customer-segmentation/1.0.0/model.pkl"
+      },
+      {
+        "version": "1.1.0",
+        "stage": "VALIDATED",
+        "approved": false,
+        "artifact_uri": "models://customer-segmentation/1.1.0/model.pkl"
+      }
+    ]
+  }
+]
