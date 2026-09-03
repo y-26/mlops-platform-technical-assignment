@@ -1,7 +1,5 @@
 # Submission Email Template
 
-This file is a private checklist template. Replace the bracketed values before sending the email; do not send this Markdown file as the submission itself.
-
 Subject: MLOps Platform Technical Assignment Submission – [Raj]
 
 Hi [Abhilash A],
